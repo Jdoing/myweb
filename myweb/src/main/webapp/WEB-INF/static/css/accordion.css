@@ -1,0 +1,46 @@
+.accordion {
+	border: 1px solid #ccc;
+	border-bottom: none;
+	font-size: 12px;
+	margin: 0;
+}
+
+.accordion .highlight {
+	background-color: #0099cc;
+}
+
+.accordion .select {
+	color: #FFFFFF;
+}
+
+.accordion dt, .accordion dd {
+	border-bottom: 1px solid #ccc;
+	text-align: left;
+}
+
+.accordion dt {
+	background-color: #eaeaea;
+	cursor: pointer;
+	padding: 8px 4px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.accordion dd {
+	font-size: 13px;
+	padding: 0;
+	margin: 0;
+}
+
+.accordion a {
+	display: block;
+	text-decoration: none;
+	font-size: 13px;
+	padding: .5em 1em;
+	width: 200px;
+}
+
+.accordion a:hover {
+	background-color: silver;
+}
+

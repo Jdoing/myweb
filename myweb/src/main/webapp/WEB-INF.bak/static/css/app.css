@@ -1,0 +1,95 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #EEEEEE;
+	margin: 0px;
+	text-align: center;
+}
+
+div#container {
+	position: relative;
+	background-color: #FFFFF0;
+	margin: 0 auto;
+	width: 1020px;
+}
+
+div#header {
+	margin: 0;
+	border: 1px solid blue;
+	height: 80px;
+}
+
+div#nav-div-id {
+	position: absolute;
+	z-index:100;
+	
+	top: 50px;
+	left: 202px;
+	bottom: 0;
+	right: 0;
+	width: 816px;
+	height: 30px;
+	overflow: hidden;
+}
+
+div#container > #layout-left {
+	overflow: scroll;
+	width: 200px;
+	float: left;
+	border: 1px solid blue;
+	height: 500px;
+	padding-bottom: 10px;
+	margin-bottom: -10px;
+}
+
+div#layout-center {
+	overflow: scroll;
+	width: 816px;
+	margin: 0;
+	padding:0;
+	float: left;
+	height: 500px;
+	border: 1px solid blue;
+}
+
+.layout-iframe  {
+	padding-bottom: 10px;
+	margin-bottom: -10px;
+	overflow: auto;
+	margin: 0;
+	width: 820px;
+	float: left;
+	height: 500px;
+	border: 1px solid blue;
+}
+
+div#footer {
+	clear: both;
+	height: 50px;
+	border: 1px solid blue;
+}
+
+.menu-header {
+
+}
+.menu-header > a {
+	background-color: silver;
+	display: block;
+	height: 40px;
+	/*去掉下划线*/
+	text-decoration: none;
+}
+
+.menu-item {
+	list-style-type: none;
+}
+
+.menu-item > a {
+	text-decoration: none;
+	display: block;
+	height: 30px;
+}
+

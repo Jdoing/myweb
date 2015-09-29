@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+
+		<property name="hibernate.connection.url">
+			jdbc:mysql://localhost/myweb
+		</property>
+
+		<property name="hibernate.connection.username">
+			root
+		</property>
+		<property name="hibernate.connection.password">
+			jiangyu
+		</property>
+		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+
+		<!-- ddl语句自动建表 -->
+		<property name="hbm2ddl.auto">update</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="jdbc.fetch_size">50</property>
+		<property name="jdbc.batch_size">30</property>
+
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.c3p0.acquireRetryAttempts">30</property>
+		<property name="hibernate.c3p0.acquireIncrement">2</property>
+		<property name="hibernate.c3p0.checkoutTimeout">30000</property>
+		<property name="hibernate.c3p0.idleConnectionTestPeriod">120</property>
+		<property name="hibernate.c3p0.maxIdleTime">180</property>
+		<property name="hibernate.c3p0.initialPoolSize">3</property>
+		<property name="hibernate.c3p0.maxPoolSize">50</property>
+		<property name="hibernate.c3p0.minPoolSize">1</property>
+		<property name="hibernate.c3p0.maxStatements">0</property>
+
+		<!-- XML配置映射关系 <mapping resource="Employee.hbm.xml" /> -->
+
+		<!-- 注册ORM映射文件 -->
+		<!-- spring不起作用 <mapping package="com.myweb.entity"/> -->
+	</session-factory>
+</hibernate-configuration>

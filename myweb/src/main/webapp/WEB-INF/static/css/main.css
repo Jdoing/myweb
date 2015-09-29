@@ -1,0 +1,23 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #EEEEEE;
+	margin: 0px;
+	text-align: center;
+}
+
+div.easyui-accordion ul li{
+border-bottom: 1px solid #ccc;
+}
+div.easyui-accordion ul a {
+	display: block;
+	text-decoration: none;
+	padding: .5em 1em;
+}
+
+div.easyui-accordion ul a:hover {
+	background-color: silver;
+}
