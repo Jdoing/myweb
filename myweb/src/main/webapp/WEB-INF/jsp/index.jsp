@@ -21,7 +21,7 @@
 <body>
 	<div id="cc" class="easyui-layout" style="width: 1000px; height: 600px; margin: 0 auto;">
 		<div data-options="region:'north',split:true" style="height: 80px;">
-			<a href="#" id="logout" class="easyui-linkbutton" plain="true" iconCls="icon-back">退出</a>
+			<a href="/myweb/api/user/logout" id="logout" class="easyui-linkbutton" plain="true" iconCls="icon-back">退出</a>
 
 		</div>
 		<div id="west" data-options="region:'west',title:'导航',split:true" style="width: 200px;">

@@ -46,9 +46,15 @@ $(function() {
 		return false;
 	});
 
-	$('#logout').click(function() {
-		$.get('/myweb/api/user/logout');
-		window.location.href = '/myweb/api/user/login.page';
-	});
+	// $('#logout').click(function() {
+	// // $.get('/myweb/api/user/logout');
+	// $.ajax({
+	// url : '/myweb/api/user/logout',
+	// async : false,
+	// type : 'GET'
+	// });
+	// alert("logout");
+	// window.location.href = '/myweb/api/user/login.page';
+	// });
 
 });

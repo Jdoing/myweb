@@ -7,6 +7,6 @@
 <title>unauthorized</title>
 </head>
 <body>
-<h2>对不起，你无权访问！</h2>
+<h2>对不起，你无权访问！${error}</h2>
 </body>
 </html>

@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.subject.Subject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myweb.dao.RoleDao;
 import com.myweb.dao.UserDao;
@@ -107,9 +107,28 @@ public class UserController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/login.page", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage() {
-        return "login";
+        return "/login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(HttpServletRequest req, RedirectAttributes ra) {
+        String exceptionClassName = (String) req.getAttribute("shiroLoginFailure");
+        String error = null;
+        if (UnknownAccountException.class.getName().equals(exceptionClassName)) {
+            error = "用户名/密码错误";
+        } else if (IncorrectCredentialsException.class.getName().equals(exceptionClassName)) {
+            error = "用户名/密码错误";
+        } else if (exceptionClassName != null) {
+            error = "其他错误：" + exceptionClassName;
+        }
+        if (error != null) {
+            ra.addFlashAttribute("error", error);
+            return "redirect:/unauthorized";
+        }
+
+        return "redirect:/index";
     }
 
     @RequestMapping(value = "/register.page", method = RequestMethod.GET)
@@ -129,30 +148,32 @@ public class UserController {
         return "OK";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/bak.login", method = RequestMethod.POST)
     public ModelAndView login(User user) {
         ModelAndView mv = new ModelAndView();
 
-        try {
-            Subject subject = SecurityUtils.getSubject();
-            UsernamePasswordToken authenticationToken = new UsernamePasswordToken(user.getUsername(),
-                    user.getPassword());
-            subject.login(authenticationToken);
-
-        } catch (AuthenticationException e) {
-            e.printStackTrace();
-            mv.setViewName("redirect:/unauthorized");
-            return mv;
-        }
+        // try {
+        // Subject subject = SecurityUtils.getSubject();
+        // UsernamePasswordToken authenticationToken = new
+        // UsernamePasswordToken(user.getUsername(),
+        // user.getPassword());
+        // subject.login(authenticationToken);
+        //
+        // } catch (AuthenticationException e) {
+        // e.printStackTrace();
+        // mv.setViewName("redirect:/unauthorized");
+        // return mv;
+        // }
 
         mv.setViewName("redirect:/index");
         return mv;
     }
 
-    @RequestMapping(value = "/logout")
-    public void logout() {
-        Subject subject = SecurityUtils.getSubject();
-        subject.logout();
-    }
+    // @RequestMapping(value = "/logout")
+    // public String logout() {
+    // Subject subject = SecurityUtils.getSubject();
+    // // subject.logout();
+    // return "redirect:/login";
+    // }
 
 }

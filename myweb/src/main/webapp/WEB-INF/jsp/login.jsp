@@ -28,6 +28,7 @@
 	<div data-options="region:'west',split:false,border:false" style="width: 30%;"></div>
 	<div data-options="region:'center',split:false,border:false" style="overflow:hidden;padding: 5px;">
 		<div class="easyui-panel" title="Login" style="width: 400px; padding: 30px 60px;">
+		<div class="error">${error}</div>
 			<form action="${ctx}/api/user/login" method="post">
 				<div style="margin-bottom: 20px">
 					<div>用户名：</div>
