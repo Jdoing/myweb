@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="application" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -28,11 +29,12 @@
 			<div class="easyui-accordion">
 				<div title="系统管理" data-options="selected:true">
 					<ul>
-						<li><a href="${ctx}/api/user/view">用户管理</a></li>
-						<li><a href="${ctx}/api/role/view">角色管理</a></li>
-						<li><a href="${ctx}/api/resource/view">资源管理</a></li>
-						<li><a href="${ctx}/api/operation/view">操作权限管理</a></li>
-
+						<c:forEach items="${menus}" var="res">
+							<c:if test="${fn:startsWith(res.url,'/')}">
+								<c:set target="${res}" property="url" value="${fn:substringAfter(res.url,'/')}" />
+							</c:if>
+								<li><a href="${ctx}/${res.url}">${res.name}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>

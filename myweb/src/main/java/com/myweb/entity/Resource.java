@@ -22,6 +22,8 @@ public class Resource implements Serializable {
     @Column(unique = true)
     private String identity;// 资源类型
 
+    private String url;
+
     public Resource() {
     }
 
@@ -72,6 +74,14 @@ public class Resource implements Serializable {
         } else if (!identity.equals(other.identity))
             return false;
         return true;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 }

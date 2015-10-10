@@ -41,21 +41,21 @@ form {
 <title>资源</title>
 </head>
 <body>
-	<table id="dg" class="easyui-datagrid"  data-options="fit:true,singleSelect:true,url:'/myweb/api/resource/all',method:'get',toolbar:'#toolbar'">
+	<table id="dg" class="easyui-datagrid" data-options="fit:true,singleSelect:true,url:'/myweb/api/resource/all',method:'get',toolbar:'#toolbar'">
 		<thead>
 			<tr>
-				<th data-options="field:'id',width:80">编号</th>
-				<th data-options="field:'name',width:80">资源名称</th>
-				<th data-options="field:'identity',width:80">资源标识</th>
+				<th data-options="field:'id',width:50">编号</th>
+				<th data-options="field:'name',width:150">资源名称</th>
+				<th data-options="field:'identity',width:100">资源标识</th>
+				<th data-options="field:'url',width:250">URL</th>
 			</tr>
 		</thead>
 	</table>
 
-    <div id="toolbar">
-        <a href="javascript:void(0)" url="${ctx}/api/resource/save" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>
-        <a href="${ctx}/api/resource/" url="${ctx}/api/resource/update?id=" class="easyui-linkbutton" iconCls="icon-edit" plain="true">编辑</a>
-        <a href="javascript:void(0)" url="${ctx}/api/resource/delete" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
-    </div>
+	<div id="toolbar">
+		<a href="javascript:void(0)" url="${ctx}/api/resource/save" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a> <a href="${ctx}/api/resource/" url="${ctx}/api/resource/update?id="
+			class="easyui-linkbutton" iconCls="icon-edit" plain="true">编辑</a> <a href="javascript:void(0)" url="${ctx}/api/resource/delete" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+	</div>
 
 	<div id="dlg" class="easyui-dialog" data-options="iconCls:'icon-save',resizable:true,modal:true" style="width: 400px; height: 280px; padding: 10px 20px" closed="true" buttons="#dlg-buttons">
 		<div class="ftitle">资源信息</div>
@@ -65,6 +65,9 @@ form {
 			</div>
 			<div class="fitem">
 				<label>资源标识:</label> <input name="identity" class="easyui-textbox" required="true">
+			</div>
+			<div class="fitem">
+				<label>URL:</label> <input name="url" class="easyui-textbox" required="false">
 			</div>
 		</form>
 	</div>

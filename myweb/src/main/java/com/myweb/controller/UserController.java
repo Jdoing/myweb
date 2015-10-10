@@ -50,7 +50,6 @@ public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String delete(@PathVariable Long id) {
-
         userDao.delete(id);
         return "OK";
     }

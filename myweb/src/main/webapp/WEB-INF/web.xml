@@ -3,7 +3,7 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>myweb</display-name>
 	<welcome-file-list>
-		<welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
+		<welcome-file>/index</welcome-file>
 	</welcome-file-list>
 
 	<!-- 加载所有的配置文件 -->

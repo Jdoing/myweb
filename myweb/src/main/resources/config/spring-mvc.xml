@@ -14,7 +14,11 @@
     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<!-- 开启Spring MVC注解 -->
-	<mvc:annotation-driven />
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<bean class="com.myweb.spring.CurrentUserMethodArgumentResolver" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
 
 	<!-- 静态资源映射 -->
 	<mvc:resources mapping="/static/**" location="/WEB-INF/static/" />
@@ -146,9 +150,5 @@
 		</property>
 	</bean>
 
-	<mvc:annotation-driven>
-		<mvc:argument-resolvers>
-			<bean class="com.myweb.controller.CurrentUserMethodArgumentResolver" />
-		</mvc:argument-resolvers>
-	</mvc:annotation-driven>
+
 </beans>

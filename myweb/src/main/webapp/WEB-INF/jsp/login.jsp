@@ -26,9 +26,8 @@
 <body class="easyui-layout">
 	<div data-options="region:'north',split:false,border:false" style="height: 100px;"></div>
 	<div data-options="region:'west',split:false,border:false" style="width: 30%;"></div>
-	<div data-options="region:'center',split:false,border:false" style="overflow:hidden;padding: 5px;">
+	<div data-options="region:'center',split:false,border:false" style="overflow: hidden; padding: 5px;">
 		<div class="easyui-panel" title="Login" style="width: 400px; padding: 30px 60px;">
-		<div class="error">${error}</div>
 			<form action="${ctx}/api/user/login" method="post">
 				<div style="margin-bottom: 20px">
 					<div>用户名：</div>
@@ -37,6 +36,9 @@
 				<div style="margin-bottom: 20px">
 					<div>密码:</div>
 					<input class="easyui-textbox" type="password" name="password" data-options="required:true,iconCls:'icon-lock'" style="width: 100%; height: 32px">
+				</div>
+				<div style="margin-bottom: 20px">
+					<div>是否记住我:<input type="checkbox" name="rememberMe"></div>
 				</div>
 				<div style="margin-bottom: 20px">
 					<a href="#" id="btn-login" class="easyui-linkbutton c8" iconCls="icon-ok" style="width: 100%; height: 32px">Login</a>
