@@ -26,7 +26,7 @@
 		<property name="maxAge" value="864000" /><!-- 有效期10天 -->
 	</bean>
 
-	<!-- cookie设置 -->
+	<!-- 持久cookie设置 -->
 	<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
 		<constructor-arg value="rememberMe" />
 		<property name="httpOnly" value="true" />
@@ -92,6 +92,15 @@
 	<!-- 自定义拦截器 -->
 	<bean id="sysUserFilter" class="com.myweb.spring.SysUserFilter"></bean>
 
+	<bean id="kickoutFilter" class="com.myweb.spring.KickoutSessionControlFilter">
+		<property name="kickoutUrl" value="/api/user/login"/>
+		<property name="SessionManager" ref="sessionManager"/>
+		<property name="cacheManager" ref="cacheManager"/>
+		<property name="kickoutAfter" value="false"/>
+		<property name="maxSession" value="2"/>
+		
+	</bean>
+	
 	<!-- Shiro的Web过滤器 ,id要与web.xml一致 -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
@@ -102,6 +111,7 @@
 			<map>
 				<entry key="authc" value-ref="formAuthenticationFilter" />
 				<entry key="sysUser" value-ref="sysUserFilter" />
+				<entry key="kickout" value-ref="kickoutFilter"/>
 			</map>
 		</property>
 		<property name="filterChainDefinitions">
@@ -111,7 +121,7 @@
 				/api/user/logout = logout
 				/api/user/register* = anon
 				/unauthorized = anon
-				/** = user,sysUser
+				/** = kickout,user,sysUser
 			</value>
 		</property>
 	</bean>
