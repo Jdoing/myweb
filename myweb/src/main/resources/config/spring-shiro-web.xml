@@ -41,7 +41,7 @@
 	</bean>
 
 	<!-- 会话DAO -->
-	<bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+	<bean id="redisCacheSessionDao" class="com.myweb.shiro.RedisCacheSessionDao">
 		<property name="activeSessionsCacheName" value="shiro-activeSessionCache" />
 		<property name="sessionIdGenerator" ref="sessionIdGenerator" />
 	</bean>
@@ -58,7 +58,7 @@
 		<property name="deleteInvalidSessions" value="true" />
 		<property name="sessionValidationSchedulerEnabled" value="true" />
 		<property name="sessionValidationScheduler" ref="sessionValidationScheduler" />
-		<property name="sessionDAO" ref="sessionDAO" />
+		<property name="sessionDAO" ref="redisCacheSessionDao" />
 		<property name="sessionIdCookieEnabled" value="true" />
 		<property name="sessionIdCookie" ref="sessionIdCookie" />
 	</bean>
