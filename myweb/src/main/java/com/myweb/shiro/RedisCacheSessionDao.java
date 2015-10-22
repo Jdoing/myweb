@@ -1,6 +1,7 @@
 package com.myweb.shiro;
 
 import java.io.Serializable;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -17,9 +18,11 @@ public class RedisCacheSessionDao extends CachingSessionDAO {
     @Resource(name = "redisTemplate")
     private ValueOperations<Serializable, Session> valueOps;
 
+    private int timeToLive = 15;
+
     @Override
     protected void doUpdate(Session session) {
-        valueOps.set(session.getId(), session);
+        valueOps.set(session.getId(), session, timeToLive, TimeUnit.MINUTES);
     }
 
     @Override
@@ -34,13 +37,21 @@ public class RedisCacheSessionDao extends CachingSessionDAO {
     protected Serializable doCreate(Session session) {
         Serializable sessionId = generateSessionId(session);
         assignSessionId(session, sessionId);
-        valueOps.set(sessionId, session);
+        valueOps.set(sessionId, session, timeToLive, TimeUnit.MINUTES);
         return sessionId;
     }
 
     @Override
     protected Session doReadSession(Serializable sessionId) {
         return valueOps.get(sessionId);
+    }
+
+    public int getTimeToLive() {
+        return timeToLive;
+    }
+
+    public void setTimeToLive(int timeToLive) {
+        this.timeToLive = timeToLive;
     }
 
 }

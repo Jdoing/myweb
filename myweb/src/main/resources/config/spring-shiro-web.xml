@@ -97,7 +97,7 @@
 		<property name="SessionManager" ref="sessionManager"/>
 		<property name="cacheManager" ref="cacheManager"/>
 		<property name="kickoutAfter" value="false"/>
-		<property name="maxSession" value="2"/>
+		<property name="maxSession" value="100"/>
 		
 	</bean>
 	
